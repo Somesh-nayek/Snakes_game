@@ -21,11 +21,11 @@ screen_width=900
 screen_height=500
 gamewindow=pygame.display.set_mode((screen_width,screen_height))
 
-bgimg=pygame.image.load('welcome.jpg')
+bgimg=pygame.image.load('resources/welcome.jpg')
 bgimg=pygame.transform.scale(bgimg,(screen_width,screen_height)).convert_alpha()
-gimg=pygame.image.load('game.jpg')
+gimg=pygame.image.load('resources/game.jpg')
 gimg=pygame.transform.scale(gimg,(screen_width,screen_height)).convert_alpha()
-img=pygame.image.load('gameover.jpg')
+img=pygame.image.load('resources/gameover.jpg')
 img=pygame.transform.scale(img,(screen_width,screen_height)).convert_alpha()
 
 pygame.display.set_caption("My first game_SNAKES")
@@ -57,7 +57,7 @@ def welcome():
         pygame.display.update()
         clock.tick(60)
 def game_loop():
-    pygame.mixer.music.load('back.mp3')
+    pygame.mixer.music.load('resources/back.mp3')
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play(-1)
     # game specific variables
@@ -120,7 +120,7 @@ def game_loop():
             snake_x+=velocity_x
             snake_y+=velocity_y
             if abs(snake_x-food_x)<10 and abs(snake_y-food_y)<10:
-                pygame.mixer.music.load('beep.mp3')
+                pygame.mixer.music.load('resources/beep.mp3')
                 pygame.mixer.music.play()
                 score+=10
                 food_x = random.randint(100, 700)
@@ -140,11 +140,11 @@ def game_loop():
             if len(snk_list)>snk_length:
                 del snk_list[0]
             if head in snk_list[:-1]:
-                pygame.mixer.music.load('gameover.mp3')
+                pygame.mixer.music.load('resources/gameover.mp3')
                 pygame.mixer.music.play()
                 game_over=True
             if snake_x<0 or snake_x>screen_width or snake_y<0 or snake_y>screen_height:
-                pygame.mixer.music.load('gameover.mp3')
+                pygame.mixer.music.load('resources/gameover.mp3')
                 pygame.mixer.music.play()
                 game_over=True
             plot_snake(gamewindow,forest_green,snk_list,snake_size)
